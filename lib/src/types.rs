@@ -1,5 +1,6 @@
 // types.rs
 use crate::U256;
+use chrono::{DateTime, Utc};
 use uuid::Uuid;
 
 pub struct Blockchain {
@@ -30,7 +31,7 @@ impl Block {
 }
 pub struct BlockHeader {
     /// Timestamp of the block
-    pub timestamp: u64,
+    pub timestamp: DateTime<Utc>,
     /// Nonce used to mine the block
     pub nonce: u64,
     /// Hash of the previous block
@@ -42,7 +43,7 @@ pub struct BlockHeader {
 }
 impl BlockHeader {
     pub fn new(
-        timestamp: u64,
+        timestamp: DateTime<Utc>,
         nonce: u64,
         prev_block_hash: [u8; 32],
         merkle_root: [u8; 32],
